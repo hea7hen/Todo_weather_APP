@@ -26,45 +26,51 @@ export default function TodoApp() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Todo App</h1>
-        <Button variant="outline" onClick={handleLogout}>
-          <LogOut className="h-4 w-4 mr-2" />
-          Logout
-        </Button>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="md:col-span-2">
-          <Card>
-            <CardHeader>
-              <CardTitle>Add New Task</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <TaskInput />
-            </CardContent>
-          </Card>
-
-          <Card className="mt-6">
-            <CardHeader>
-              <CardTitle className="text-black">Your Tasks</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <TaskList />
-            </CardContent>
-          </Card>
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col space-y-6">
+        {/* Header Section */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-6">
+          <h1 className="text-2xl sm:text-3xl font-bold">Todo App</h1>
+          <Button variant="outline" onClick={handleLogout}>
+            <LogOut className="h-4 w-4 mr-2" />
+            Logout
+          </Button>
         </div>
 
-        <div>
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-black">Weather</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <WeatherDisplay weather={weather} loading={loading} error={error} />
-            </CardContent>
-          </Card>
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Tasks Section */}
+          <div className="lg:col-span-2 space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Add New Task</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <TaskInput />
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Your Tasks</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <TaskList />
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Weather Section */}
+          <div>
+            <Card className="sticky top-6">
+              <CardHeader>
+                <CardTitle>Weather</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <WeatherDisplay weather={weather} loading={loading} error={error} />
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
